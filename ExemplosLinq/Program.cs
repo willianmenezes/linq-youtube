@@ -29,33 +29,18 @@ namespace ExemplosLinq
                 new Categoria{Id = 3, Status = true, Nome = "Vestuario"},
             };
 
-            // CRIAR CONSULTA LINQ
-            // 01 - Filtrar produtos por nome
-            //var resultado = from produto in listaProdutos
-            //                where produto.Nome.ToLower() == "Microondas".ToLower()
-            //                select produto;
-
-            // 02 - Filtrar produtos pela primeira letra do nome
-            //var resultado = from produto in listaProdutos
-            //                where produto.Nome.ToLower().Substring(0, 1) == "m".ToLower()
-            //                select produto;
-
-            //// 03 - Filtrar produtos pela primeira letra do nome e status ativo
-            //var resultado = from produto in listaProdutos
-            //                where produto.Nome.ToLower().Substring(0, 1) == "m".ToLower() && 
-            //                produto.Status == false
-            //                select produto;
-
-            // 04 - Ordernar os produtos por ID
-            var resultado = from produto in listaProdutos
-                            where produto.Id > 1 && produto.Id < 6
-                            orderby produto.Id descending
-                            select produto;
+            var resultado = from prod in listaProdutos
+                            select new ProdutoDto
+                            {
+                                Nome = prod.Nome.ToUpper(),
+                                Valor = prod.Valor,
+                                Status = prod.Status
+                            };
 
             //EXECUTAR A CONSULTA
             foreach (var result in resultado)
             {
-                Console.WriteLine($"{result.Id} | {result.Nome} | {result.Valor} | {result.CategoriaId}");
+                Console.WriteLine($"{result.Nome} | {result.Valor} | {result.Status}");
             }
         }
     }
@@ -73,6 +58,13 @@ namespace ExemplosLinq
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+        public bool Status { get; set; }
+    }
+
+    class ProdutoDto
+    {
+        public string Nome { get; set; }
+        public decimal Valor { get; set; }
         public bool Status { get; set; }
     }
 }
