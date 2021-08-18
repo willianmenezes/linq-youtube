@@ -30,17 +30,18 @@ namespace ExemplosLinq
             };
 
             var resultado = from prod in listaProdutos
-                            group prod by prod.Status into produtosAgrupados
-                            select produtosAgrupados;
+                            join cat in listaCategorias
+                            on prod.CategoriaId equals cat.Id
+                            select new
+                            {
+                                Produto = prod,
+                                Categoria = cat
+                            };
 
             //EXECUTAR A CONSULTA
             foreach (var result in resultado)
             {
-                Console.WriteLine(result.Key);
-                foreach (var item in result)
-                {
-                    Console.WriteLine($"Nome: {item.Nome} | Categoria: {item.CategoriaId}");
-                }
+                Console.WriteLine($"Nome: {result.Produto.Nome} | Categoria: {result.Categoria.Nome}");
             }
         }
     }
