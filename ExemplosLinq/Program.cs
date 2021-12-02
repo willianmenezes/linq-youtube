@@ -21,16 +21,36 @@ namespace ExemplosLinq
                 new Produto {Id = 5, CategoriaId = 1, Nome = "Microondas", Status = true, Valor = 90},
                 new Produto {Id = 7, CategoriaId = 2, Nome = "Feijão", Status = true, Valor = 12},
             };
-            
-            // Ignorar os tres primeiros produtos e pegar o restante
 
-            // pegar os 3 primeiros produtos e ignorar o restante
+            // valor total da lista
+            var valotTotal = listaProdutos.Sum(prod => prod.Valor);
 
-            var resultado = listaProdutos.Skip(3).Take(3);
+            // media do valor dos produtos
+            var mediaValorProdutos = listaProdutos.Average(prod => prod.Valor);
 
-            foreach (var prod in resultado)
+            // quantos itens tem na lista
+            var quantidadeItensLista = listaProdutos.Count();
+            var quantidaItensValorMaiorQue90 = listaProdutos.Count(prod => prod.Valor > 90);
+
+            Console.WriteLine($"Valor total: {valotTotal}");
+            Console.WriteLine($"Media: {mediaValorProdutos}");
+            Console.WriteLine($"Total de itens: {quantidadeItensLista}");
+            Console.WriteLine($"Total de itens com valor maior que 90: {quantidaItensValorMaiorQue90}");
+
+            // criar uma lista com um range de numeros
+            var range = Enumerable.Range(1, 15);
+
+            foreach (var item in range)
             {
-                Console.WriteLine($"ID: {prod.Id}  NOME: {prod.Nome}");
+                Console.WriteLine(item);
+            }
+
+            // criar uma lista com varios itens semelhantes
+            var listaProdutoIguais = Enumerable.Repeat(new Produto() { Id = 1 }, 5);
+
+            foreach (var item in listaProdutoIguais)
+            {
+                Console.WriteLine(item);
             }
         }
 
