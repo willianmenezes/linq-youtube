@@ -2,7 +2,7 @@
  
 ## Como usar esse repositório para aprender? 
 
-O link para a play linst no youtube esta [aqui](https://www.youtube.com/playlist?list=PLelKrgw43Tu2A2hCLMtrrS_Ox6ds-p7jw).
+O link para a play list no youtube esta [aqui](https://www.youtube.com/playlist?list=PLelKrgw43Tu2A2hCLMtrrS_Ox6ds-p7jw).
  
 Você pode clonar esse repositório e acompanhar o que a gente aprendeu nas aulas através dos commits.
  
